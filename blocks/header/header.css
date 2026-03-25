@@ -334,18 +334,20 @@ header .nav-wrapper {
   z-index: 100;
 }
 
-/* Utility bar — 4th div in nav (after hamburger/brand/sections/tools) */
-header nav > div:last-child {
-  display: none;
+/* Utility bar — the div in nav that has NO nav-* class (JS assigns brand/sections/tools/hamburger) */
+header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav-tools) {
+  display: none; /* hidden on mobile, shown as top blue bar on desktop */
 }
 
 @media (width >= 900px) {
   header nav {
     flex-wrap: wrap;
     padding: 0;
+    /* keep max-width and gap from base CSS — just wrap for utility row */
   }
 
-  header nav > div:last-child {
+  /* Utility bar: full-width blue row above the main nav */
+  header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav-tools) {
     display: flex;
     order: -1;
     width: 100%;
@@ -354,23 +356,25 @@ header nav > div:last-child {
     align-items: center;
     gap: 24px;
     padding: 7px 32px;
+    box-sizing: border-box;
   }
 
-  header nav > div:last-child p {
+  header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav-tools) p {
     margin: 0;
   }
 
-  header nav > div:last-child a {
+  header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav-tools) a {
     color: #fff;
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
   }
 
-  header nav > div:last-child a:hover {
+  header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav-tools) a:hover {
     text-decoration: underline;
   }
 
+  /* Restore outer padding on main nav row */
   header nav .nav-brand {
     padding-left: 32px;
   }
