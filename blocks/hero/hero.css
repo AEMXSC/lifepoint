@@ -51,14 +51,20 @@
     radial-gradient(circle 92px at 97% 82%, #5468b7 99%, transparent 100%);
 }
 
-/* White gradient overlay — z-index 2, on top of circles */
-/* Fully opaque on left (masks circles, makes clean white bg for text) */
-/* Fades to transparent on right (reveals photo + circles) */
-.hero::after {
+/* White gradient overlay — lives inside .hero > div so it renders above the picture */
+/* picture is position:absolute inside .hero > div (z-index:3), so ::after on .hero would be below it */
+/* Using ::before on .hero > div puts the gradient above the picture (z-index:0) but below text (auto) */
+.hero > div {
+  position: relative;
+  z-index: 3;
+}
+
+.hero > div::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
+  pointer-events: none;
   background: linear-gradient(
     to right,
     #fff 0%,
@@ -66,12 +72,6 @@
     rgba(255 255 255 / 70%) 45%,
     rgba(255 255 255 / 0%) 65%
   );
-}
-
-/* Content — above both circles and overlay */
-.hero > div {
-  position: relative;
-  z-index: 3;
 }
 
 /* Heading — "Great care" is plain text → purple bold; "lives here" is <em> → lighter gray */
