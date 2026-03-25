@@ -295,8 +295,17 @@
   object-fit: cover;
 }
 
-/* Link text sits above the picture layer at the bottom of each panel */
-.section.cta-split .columns p {
+/* Picture paragraph — must NOT have position:relative or it becomes the picture's containing block */
+/* picture is position:absolute; inset:0, so it must anchor to the panel div, not the <p> */
+.section.cta-split .columns p:has(picture) {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-size: 0;
+}
+
+/* Link text — above the picture layer, at the bottom of each panel */
+.section.cta-split .columns p:last-child {
   position: relative;
   z-index: 1;
   color: #fff;
@@ -304,16 +313,21 @@
   line-height: 1;
 }
 
-.section.cta-split .columns p a {
+/* Bordered box link — matches production style */
+.section.cta-split .columns p:last-child a {
+  display: inline-block;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   text-decoration: none;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  border: 2px solid rgba(255 255 255 / 70%);
+  padding: 8px 24px;
 }
 
-.section.cta-split .columns p a:hover {
-  text-decoration: underline;
+.section.cta-split .columns p:last-child a:hover {
+  border-color: #fff;
+  background: rgba(255 255 255 / 10%);
 }
 
 /* Override arrow button styling for this section */
