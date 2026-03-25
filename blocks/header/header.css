@@ -343,7 +343,16 @@ header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav
   header nav {
     flex-wrap: wrap;
     padding: 0;
+    height: auto; /* utility bar + main nav row — don't clip to --nav-height */
     /* keep max-width and gap from base CSS — just wrap for utility row */
+  }
+
+  /* Ensure brand/sections/tools row stays nav-height tall */
+  header nav .nav-brand,
+  header nav .nav-tools {
+    min-height: var(--nav-height);
+    display: flex;
+    align-items: center;
   }
 
   /* Utility bar: full-width blue row above the main nav */

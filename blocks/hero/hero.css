@@ -29,18 +29,19 @@
 
 /* Decorative brand circles — z-index 1, behind white overlay */
 /* White overlay on left will mask them; right side (transparent) reveals circles above photo */
+/* y-positions start at 22%+ to stay below the fixed nav (nav height ~18% of hero) */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle 110px at 61% 18%, var(--color-magenta) 99%, transparent 100%),
-    radial-gradient(circle 155px at 57% 58%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 130px at 86% 4%, #5468b7 99%, transparent 100%),
+    radial-gradient(circle 110px at 61% 28%, var(--color-magenta) 99%, transparent 100%),
+    radial-gradient(circle 155px at 57% 62%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 130px at 86% 22%, #5468b7 99%, transparent 100%),
     radial-gradient(circle 88px at 46% 88%, var(--color-magenta) 99%, transparent 100%),
     radial-gradient(circle 108px at 64% 92%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 150px at 98% 52%, #5468b7 99%, transparent 100%);
+    radial-gradient(circle 150px at 98% 54%, #5468b7 99%, transparent 100%);
 }
 
 /* White gradient overlay — z-index 2, on top of circles */
