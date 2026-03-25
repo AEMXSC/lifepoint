@@ -54,8 +54,9 @@
   /* layout */
   --max-width-site: 1200px;
 
-  /* nav heights — update once header block is built */
+  /* nav heights */
   --nav-height: 64px;
+  --nav-utility-height: 0px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
@@ -122,8 +123,13 @@ footer .footer[data-block-status="loaded"] {
 }
 
 @media (width >= 900px) {
+  :root {
+    --nav-utility-height: 34px;
+    --header-height: calc(var(--nav-height) + var(--nav-utility-height));
+  }
+
   body[data-breadcrumbs] {
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
+    --header-height: calc(var(--nav-height) + var(--nav-utility-height) + var(--breadcrumbs-height));
   }
 }
 

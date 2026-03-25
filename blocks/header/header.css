@@ -327,10 +327,57 @@ header .breadcrumbs ol li[aria-current] {
    Lifepoint brand nav overrides
    ============================================= */
 
-/* White background nav with shadow */
+/* White background nav with shadow — z-index 100 keeps it above all sections on scroll */
 header .nav-wrapper {
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0 0 0 / 10%);
+  z-index: 100;
+}
+
+/* Utility bar — 4th div in nav (after hamburger/brand/sections/tools) */
+header nav > div:last-child {
+  display: none;
+}
+
+@media (width >= 900px) {
+  header nav {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  header nav > div:last-child {
+    display: flex;
+    order: -1;
+    width: 100%;
+    background-color: var(--color-blue);
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    padding: 7px 32px;
+  }
+
+  header nav > div:last-child p {
+    margin: 0;
+  }
+
+  header nav > div:last-child a {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  header nav > div:last-child a:hover {
+    text-decoration: underline;
+  }
+
+  header nav .nav-brand {
+    padding-left: 32px;
+  }
+
+  header nav .nav-tools {
+    padding-right: 32px;
+  }
 }
 
 /* Logo sizing */
