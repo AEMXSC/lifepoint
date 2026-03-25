@@ -1,8 +1,9 @@
 /* hero design tokens — Lifepoint */
 :root {
-  --hero-padding: 120px 24px 80px;
-  --hero-padding-desktop: 160px 80px 100px;
-  --hero-min-height: 480px;
+  /* Top padding accounts for fixed nav height */
+  --hero-padding: 140px 32px 80px;
+  --hero-padding-desktop: 200px 80px 100px;
+  --hero-min-height: 520px;
   --hero-min-height-desktop: 640px;
-  --hero-heading-max-width: 600px;
+  --hero-heading-max-width: 480px;
 }

@@ -1,10 +1,10 @@
 /* cards design tokens — Lifepoint */
 :root {
   --cards-grid-min-width: 280px;
-  --cards-grid-gap: 32px;
+  --cards-grid-gap: 24px;
   --cards-card-border-width: 0;
   --cards-card-border-color: transparent;
-  --cards-card-body-margin: 20px 0;
+  --cards-card-body-padding: 20px 24px 28px;
   --cards-image-aspect-ratio: 16 / 9;
   --cards-image-object-fit: cover;
 }

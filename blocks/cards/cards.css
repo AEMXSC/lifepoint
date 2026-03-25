@@ -10,12 +10,12 @@
 }
 
 .cards > ul > li {
-  border: var(--cards-card-border-width) solid var(--cards-card-border-color);
   background-color: var(--background-color);
+  box-shadow: 0 2px 12px rgba(0 0 0 / 8%);
 }
 
 .cards .cards-card-body {
-  margin: var(--cards-card-body-margin);
+  padding: var(--cards-card-body-padding);
 }
 
 .cards .cards-card-image {
@@ -32,6 +32,7 @@
 .cards > ul > li h3 {
   font-size: var(--heading-font-size-s);
   color: var(--color-purple);
+  margin-top: 0;
   margin-bottom: 8px;
 }
 
@@ -45,7 +46,7 @@
   text-decoration: underline;
 }
 
-/* date line (first p after h3) */
+/* Date line — first p in card body (uppercase blue) */
 .cards .cards-card-body > p:first-of-type {
   font-size: 13px;
   color: var(--color-blue);
@@ -55,6 +56,7 @@
   margin-bottom: 8px;
 }
 
+/* "Read more" — plain link, not a filled button */
 .cards .cards-card-body a.button {
   background: none;
   border: none;
@@ -68,4 +70,38 @@
 .cards .cards-card-body a.button:hover {
   color: var(--color-magenta);
   text-decoration: underline;
+}
+
+/* =============================================
+   Latest News section — grey bg + heading
+   ============================================= */
+
+.section:has(.cards) {
+  background-color: var(--color-off-white);
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+/* "Latest News" heading — centered + purple */
+.section:has(.cards) .default-content-wrapper h2 {
+  text-align: center;
+  color: var(--color-purple);
+}
+
+/* "View More" — outline pill button, centered below cards */
+.section:has(.cards) > .default-content-wrapper:last-child a.button {
+  background: none;
+  color: var(--color-blue);
+  border: 2px solid var(--color-blue);
+  border-radius: 2.4em;
+  padding: 0.55em 2em;
+  font-weight: 600;
+  display: block;
+  width: fit-content;
+  margin: 32px auto 0;
+}
+
+.section:has(.cards) > .default-content-wrapper:last-child a.button:hover {
+  background-color: var(--color-blue);
+  color: #fff;
 }

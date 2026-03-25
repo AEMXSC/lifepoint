@@ -171,3 +171,102 @@
   color: #fff;
   border-bottom-color: #fff;
 }
+
+/* =============================================
+   CTA Split — two full-width colored panels
+   Left: blue with image overlay, Right: magenta with image overlay
+   ============================================= */
+
+.section.cta-split {
+  padding: 0;
+}
+
+/* Remove max-width constraint so panels go edge-to-edge */
+.section.cta-split .columns-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+/* Panels side-by-side, stretch to equal height */
+.section.cta-split .columns > div {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  min-height: 400px;
+}
+
+/* Each panel */
+.section.cta-split .columns > div > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  position: relative;
+}
+
+/* No decorative circles in this section */
+.section.cta-split .columns .columns-img-col::before,
+.section.cta-split .columns .columns-img-col::after {
+  display: none;
+}
+
+/* Left panel — blue */
+.section.cta-split .columns > div > div:first-child {
+  background-color: #4a6cb3;
+}
+
+/* Right panel — magenta */
+.section.cta-split .columns > div > div:last-child {
+  background-color: var(--color-magenta);
+}
+
+/* Images: desaturate via luminosity blend so panel color becomes the tint */
+.section.cta-split .columns picture {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+}
+
+.section.cta-split .columns img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: luminosity;
+  border-radius: 0;
+  aspect-ratio: unset;
+  max-width: unset;
+  object-fit: cover;
+}
+
+/* Link text below the image */
+.section.cta-split .columns p {
+  color: var(--color-light-blue);
+  margin-top: 20px;
+  line-height: 1;
+}
+
+.section.cta-split .columns p a {
+  color: var(--color-light-blue);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.section.cta-split .columns p a:hover {
+  text-decoration: underline;
+}
+
+/* Override arrow button styling for this section */
+.section.cta-split .columns a.button {
+  color: var(--color-light-blue);
+  background: none;
+  border: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.section.cta-split .columns a.button::after {
+  content: '';
+}

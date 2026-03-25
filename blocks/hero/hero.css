@@ -9,53 +9,85 @@
   position: relative;
   padding: var(--hero-padding);
   min-height: var(--hero-min-height);
+  overflow: hidden;
 }
 
+/* Background image — anchored right so healthcare workers photo shows on right */
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
-  object-fit: cover;
   box-sizing: border-box;
 }
 
 .hero img {
   object-fit: cover;
+  object-position: right center;
   width: 100%;
   height: 100%;
 }
 
-/* Dark overlay — left heavy so left-aligned text is readable */
+/* Decorative brand circles — z-index 1, behind white overlay */
+/* White overlay on left will mask them; right side (transparent) reveals circles above photo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle 110px at 61% 18%, var(--color-magenta) 99%, transparent 100%),
+    radial-gradient(circle 155px at 57% 58%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 130px at 86% 4%, #5468b7 99%, transparent 100%),
+    radial-gradient(circle 88px at 46% 88%, var(--color-magenta) 99%, transparent 100%),
+    radial-gradient(circle 108px at 64% 92%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 150px at 98% 52%, #5468b7 99%, transparent 100%);
+}
+
+/* White gradient overlay — z-index 2, on top of circles */
+/* Fully opaque on left (masks circles, makes clean white bg for text) */
+/* Fades to transparent on right (reveals photo + circles) */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: linear-gradient(to right, rgba(0 0 0 / 60%) 0%, rgba(0 0 0 / 30%) 50%, rgba(0 0 0 / 10%) 100%);
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    #fff 0%,
+    rgba(255 255 255 / 98%) 25%,
+    rgba(255 255 255 / 70%) 45%,
+    rgba(255 255 255 / 0%) 65%
+  );
 }
 
-/* Left-aligned hero text */
+/* Content — above both circles and overlay */
+.hero > div {
+  position: relative;
+  z-index: 3;
+}
+
+/* Heading — dark text on white background, no shadow */
 .hero h1 {
   max-width: var(--hero-heading-max-width);
-  color: #fff;
+  color: var(--text-color);
   font-size: var(--heading-font-size-xxl);
   font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0 0 0 / 40%);
   margin-top: 0;
 }
 
+/* "lives here" part: lighter weight, non-italic (em used as lighter weight marker) */
 .hero h1 em {
   font-style: normal;
   font-weight: 300;
 }
 
 .hero p {
-  color: #fff;
+  color: var(--text-color);
   max-width: var(--hero-heading-max-width);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
   margin-top: 16px;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .hero a.button {
