@@ -322,3 +322,75 @@ header .breadcrumbs ol li[aria-current] {
     padding: var(--header-nav-padding-desktop);
   }
 }
+
+/* =============================================
+   Lifepoint brand nav overrides
+   ============================================= */
+
+/* White background nav with shadow */
+header .nav-wrapper {
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0 0 0 / 10%);
+}
+
+/* Logo sizing */
+header .nav-brand img {
+  height: 40px;
+  width: auto;
+}
+
+/* Nav links — purple on hover */
+header nav .nav-sections ul li a {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+header nav .nav-sections ul li a:hover,
+header nav .nav-sections ul li[aria-expanded='true'] > a {
+  color: var(--color-purple);
+  text-decoration: none;
+}
+
+/* Dropdown arrow color */
+header nav .nav-sections ul li.nav-drop::after {
+  border-color: var(--color-purple);
+}
+
+/* Dropdown panel */
+header nav .nav-sections ul li.nav-drop > ul {
+  background-color: #fff;
+  border-top: 3px solid var(--color-blue);
+  box-shadow: 0 8px 24px rgba(0 0 0 / 12%);
+}
+
+header nav .nav-sections ul li.nav-drop > ul li a {
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+header nav .nav-sections ul li.nav-drop > ul li a:hover {
+  color: var(--color-blue);
+}
+
+/* Contact Us CTA button */
+header nav .nav-tools a {
+  background-color: var(--color-blue);
+  color: #fff;
+  border-radius: 2.4em;
+  padding: 0.45em 1.2em;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header nav .nav-tools a:hover {
+  background-color: var(--color-magenta);
+}
+
+/* Mobile nav */
+header nav[aria-expanded='true'] {
+  background-color: #fff;
+}
