@@ -370,6 +370,7 @@ main .section.cta-split .columns > div > div:last-child a.button {
 /* More breathing room between sections */
 main > .section {
   margin: 60px 0;
+  overflow: hidden; /* prevent decorative circles from bleeding across section boundaries */
 }
 
 @media (width >= 900px) {

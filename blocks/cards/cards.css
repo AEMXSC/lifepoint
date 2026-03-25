@@ -12,10 +12,21 @@
 .cards > ul > li {
   background-color: var(--background-color);
   box-shadow: 0 2px 12px rgba(0 0 0 / 8%);
+  display: flex;
+  flex-direction: column;
 }
 
 .cards .cards-card-body {
   padding: var(--cards-card-body-padding);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push "Read more" to bottom of card */
+.cards .cards-card-body > p:last-child {
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .cards .cards-card-image {

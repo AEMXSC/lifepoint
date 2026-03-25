@@ -1,22 +1,347 @@
 @import url('./footer-tokens.css');
 
+/* =============================================
+   Lifepoint Footer
+   Structure from footer.plain.html:
+     Section 1: logo + h2 nav headings + ul sub-links (Who We Are / What We Do / Partner With Us)
+     Section 2: h2 Quick Links + ul links + h2 Connect + ul social + p phone + p copyright + ul legal
+   ============================================= */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #fff;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: var(--footer-max-width);
-  padding: var(--footer-padding);
+/* Reset inner section layout — EDS injects .section wrappers */
+footer .section {
+  margin: 0;
+  padding: 0;
 }
 
-footer .footer p {
+footer .section > div {
+  max-width: unset;
+  padding: 0;
   margin: 0;
 }
 
+/* Constrain content to max-width */
+footer .footer > div > .section > .default-content-wrapper {
+  max-width: var(--footer-max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================= */
+/* SECTION 1: Logo (left) + Nav columns (right)  */
+/* ============================================= */
+
+footer .section:first-child .default-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  padding-top: 48px;
+  padding-bottom: 40px;
+}
+
+/* Logo */
+footer .section:first-child p:first-child {
+  flex: 0 0 160px;
+  margin: 0;
+}
+
+footer .section:first-child p:first-child img {
+  width: 155px;
+  height: auto;
+}
+
+/* Nav area — h2 headings + sub-links */
+/* Wrap the three nav groups in a responsive grid */
+footer .section:first-child h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-purple);
+  font-family: var(--body-font-family);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  letter-spacing: 0;
+}
+
+footer .section:first-child ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+footer .section:first-child ul li {
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+footer .section:first-child ul li a {
+  color: #4a4a4a;
+  font-size: 13px;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+footer .section:first-child ul li a:hover {
+  color: var(--color-purple);
+  text-decoration: underline;
+}
+
+/* Wrap the h2+ul nav groups in a CSS columns layout */
+/* All items after the logo p are nav content */
+footer .section:first-child .default-content-wrapper > h2,
+footer .section:first-child .default-content-wrapper > ul {
+  /* will be inside a pseudo-generated nav area via flex order */
+}
+
+/* Create a wrapping nav container: all elements except logo p */
+/* Since logo is p:first-child, subsequent h2+ul flow as nav */
+/* Use a trick: logo p takes 160px, remaining space auto */
+footer .section:first-child .default-content-wrapper > h2 {
+  flex: 0 0 140px; /* each h2+ul pair takes ~140px column */
+}
+
+footer .section:first-child .default-content-wrapper > ul {
+  flex: 0 0 140px;
+}
+
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: var(--footer-padding-desktop);
+  footer .section:first-child .default-content-wrapper > h2 {
+    flex: 0 0 160px;
+  }
+
+  footer .section:first-child .default-content-wrapper > ul {
+    flex: 0 0 160px;
+  }
+}
+
+/* ============================================= */
+/* SECTION 2: Quick Links + Social + Legal bar   */
+/* ============================================= */
+
+footer .section:last-child .default-content-wrapper {
+  border-top: 2px solid var(--color-blue);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Quick Links section — visible nav row */
+footer .section:last-child h2:first-of-type {
+  display: none; /* hide "Quick Links" heading */
+}
+
+footer .section:last-child h2:last-of-type {
+  display: none; /* hide "Connect" heading */
+}
+
+/* Quick Links ul — horizontal nav */
+footer .section:last-child ul:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid var(--color-off-white);
+  align-items: center;
+}
+
+footer .section:last-child ul:first-of-type li {
+  display: flex;
+  align-items: center;
+}
+
+footer .section:last-child ul:first-of-type li + li::before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: #ccc;
+  margin: 0 12px;
+}
+
+footer .section:last-child ul:first-of-type li a {
+  color: var(--color-purple);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+footer .section:last-child ul:first-of-type li a:hover {
+  text-decoration: underline;
+}
+
+/* Social links ul — icon circles */
+footer .section:last-child ul:nth-of-type(2) {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  justify-content: flex-end;
+  border-bottom: 1px solid var(--color-off-white);
+}
+
+/* Quick Links + Social in same row */
+footer .section:last-child .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Position the two first items as a flex row */
+footer .section:last-child ul:first-of-type {
+  order: 1;
+  flex: 1;
+}
+
+footer .section:last-child ul:nth-of-type(2) {
+  order: 2;
+}
+
+/* Override: layout Quick Links (left) + Social icons (right) in one row */
+footer .section:last-child .default-content-wrapper {
+  display: block;
+}
+
+/* Quick Links + Social row */
+.footer-nav-social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-off-white);
+}
+
+footer .section:last-child ul:nth-of-type(2) li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #bbb;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: -99px; /* hide text, show as grey circle */
+  position: relative;
+}
+
+/* Show first letter as icon */
+footer .section:last-child ul:nth-of-type(2) li a::after {
+  content: attr(data-initial);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-indent: 0;
+  font-size: 12px;
+}
+
+footer .section:last-child ul:nth-of-type(2) li a:hover {
+  background-color: var(--color-blue);
+}
+
+/* ============================================= */
+/* LEGAL BAR — phone, copyright, legal links     */
+/* ============================================= */
+
+footer .section:last-child p,
+footer .section:last-child ul:last-of-type {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+footer .section:last-child p:first-of-type {
+  /* phone number */
+  color: var(--color-purple);
+  font-weight: 600;
+}
+
+footer .section:last-child p:first-of-type a {
+  color: inherit;
+  text-decoration: none;
+}
+
+footer .section:last-child p:nth-of-type(2) {
+  /* copyright */
+  font-size: 13px;
+  color: #555;
+}
+
+/* Legal links — inline with | separators */
+footer .section:last-child ul:last-of-type {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+footer .section:last-child ul:last-of-type li + li::before {
+  content: '|';
+  margin: 0 8px;
+  color: #ccc;
+}
+
+footer .section:last-child ul:last-of-type li a {
+  color: var(--color-blue);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+footer .section:last-child ul:last-of-type li a:hover {
+  text-decoration: underline;
+}
+
+/* Legal bar: copyright+legal (left) | phone (right) */
+@media (width >= 900px) {
+  footer .section:last-child .default-content-wrapper {
+    display: grid;
+    grid-template-areas:
+      "quicklinks quicklinks social"
+      "copyright legal phone";
+    grid-template-columns: auto 1fr auto;
+    gap: 0;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+
+  footer .section:last-child ul:first-of-type {
+    grid-area: quicklinks;
+    border-bottom: 1px solid var(--color-off-white);
+    padding: 20px 0;
+  }
+
+  footer .section:last-child ul:nth-of-type(2) {
+    grid-area: social;
+    border-bottom: 1px solid var(--color-off-white);
+    justify-content: flex-end;
+    padding: 20px 0;
+  }
+
+  footer .section:last-child p:nth-of-type(2) {
+    grid-area: copyright;
+    padding-top: 20px;
+  }
+
+  footer .section:last-child ul:last-of-type {
+    grid-area: legal;
+    padding-top: 20px;
+    padding-left: 16px;
+  }
+
+  footer .section:last-child p:first-of-type {
+    grid-area: phone;
+    text-align: right;
+    padding-top: 20px;
   }
 }
