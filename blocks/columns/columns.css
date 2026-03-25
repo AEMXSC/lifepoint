@@ -88,6 +88,7 @@
   align-items: center;
   justify-content: center;
   padding: 32px;
+  overflow: hidden; /* contain decorative circles within the column */
 }
 
 .columns .columns-img-col img {
@@ -136,10 +137,10 @@
 /* Blue-gradient section: circular image with white ring + decorative magenta arc */
 /* Disable the standard green/purple decorative circles */
 .section.blue-gradient .columns .columns-img-col::before {
-  width: 200px;
-  height: 200px;
-  top: -16px;
-  right: -16px;
+  width: 180px;
+  height: 180px;
+  top: 4px;
+  right: 4px;
   border-color: var(--color-magenta);
   border-width: 4px;
   border-style: solid;
@@ -151,8 +152,8 @@
 .section.blue-gradient .columns .columns-img-col::after {
   width: 56px;
   height: 56px;
-  bottom: 0;
-  left: 0;
+  bottom: 4px;
+  left: 4px;
   background-color: var(--color-magenta);
   display: block;
 }
