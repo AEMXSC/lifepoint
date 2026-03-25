@@ -74,22 +74,16 @@
   z-index: 3;
 }
 
-/* Heading — "lives here" in lighter gray */
+/* Heading — "Great care" is plain text → purple bold; "lives here" is <em> → lighter gray */
 .hero h1 {
   max-width: var(--hero-heading-max-width);
-  color: #888;
+  color: var(--color-purple);
   font-size: var(--heading-font-size-xxl);
-  font-weight: 400;
+  font-weight: 700;
   margin-top: 0;
 }
 
-/* "Great care" — bold purple */
-.hero h1 strong {
-  color: var(--color-purple);
-  font-weight: 800;
-}
-
-/* "lives here" via em — lighter weight, non-italic */
+/* "lives here" — lighter weight, non-italic, gray */
 .hero h1 em {
   font-style: normal;
   font-weight: 300;
