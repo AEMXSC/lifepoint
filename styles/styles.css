@@ -54,8 +54,8 @@
   /* layout */
   --max-width-site: 1200px;
 
-  /* nav heights */
-  --nav-height: 130px;
+  /* nav heights — update once header block is built */
+  --nav-height: 64px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 

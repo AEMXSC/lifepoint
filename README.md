@@ -1,37 +1,39 @@
-# Your Project's Title...
-Your project's description...
+# Lifepoint Health — AEM Edge Delivery Services
 
-## Environments
-- Preview: https://main--ise-boilerplate--aemdemos.aem.page/
-- Live: https://main--ise-boilerplate--aemdemos.aem.live/
+EDS demo site for [Lifepoint Health](https://www.lifepointhealth.net/), built on [ise-boilerplate](https://github.com/aemdemos/ise-boilerplate) with DA + Universal Editor dual authoring.
 
-## Documentation
+## Preview
 
-Before using the aem-block-collection, we recommand you to go through the documentation on https://www.aem.live/docs/ and more specifically:
-1. [Developer Tutorial](https://www.aem.live/developer/ue-tutorial)
-1. [Creating Blocks](https://www.aem.live/developer/universal-editor-blocks) and [Content Modelling](https://www.aem.live/developer/component-model-definitions)
-1. [The Anatomy of a Project](https://www.aem.live/developer/anatomy-of-a-project)
-1. [Web Performance](https://www.aem.live/developer/keeping-it-100)
-1. [Markup, Sections, Blocks, and Auto Blocking](https://www.aem.live/developer/markup-sections-blocks)
-1. [AEM Block Collection](https://www.aem.live/developer/block-collection#block-collection-1)
+- **Live:** `https://main--lifepoint--aemxsc.aem.live/`
+- **Preview:** `https://main--lifepoint--aemxsc.hlx.page/`
 
-## Installation
+## Authoring
 
-```sh
-npm i
-```
+Content is authored in [DA (Document Authoring)](https://da.live/AEMXSC/lifepoint).
 
-## Linting
-max length lines for JS allows up to 220, and descending specificity for CSS has been disabled so the ExMod tool doesn't burn through tokens attempting to fix.
+## Brand
 
-```sh
-npm run lint
-```
+| Token | Value |
+|-------|-------|
+| Primary blue | `#2b6bb2` |
+| Purple (headings) | `#6f3aa0` |
+| Magenta | `#a51890` |
+| Body font | Roboto |
+| Heading font | ff-dax-pro (Adobe Fonts) |
 
-## Local development
+> **Note:** `ff-dax-pro` requires an Adobe Fonts (Typekit) embed in `head.html`. Add the Typekit `<link>` tag from your Adobe Fonts kit to activate the heading font.
 
-1. Create a new repository based on the `aem-block-collection` template and add a mountpoint in the `fstab.yaml`
-1. Add the [AEM Code Sync GitHub App](https://github.com/apps/aem-code-sync) to the repository
-1. Install the [AEM CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/aem-cli`
-1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000`)
-1. Open the `ise-boilerplate` directory in your favorite IDE and start coding :)
+## Structure
+
+| Section | Block |
+|---------|-------|
+| Hero | `hero` — full-bleed image with overlay |
+| Mission | default content + `columns` |
+| Featured Story | `columns` + `blue-gradient` section style |
+| Content Blocks | 3× `columns` (alternating image/text) |
+| Latest News | `cards` |
+| Bottom CTA | `columns` + `cta-split` section style |
+
+## Import Source
+
+Imported from `https://www.lifepointhealth.net/` on 2026-03-25 using the AEM page-import workflow.
