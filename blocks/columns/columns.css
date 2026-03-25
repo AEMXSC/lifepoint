@@ -253,9 +253,12 @@
   position: relative;
 }
 
-/* No decorative circles in this section */
+/* Suppress ALL pseudo-elements on CTA split panels — no decorative circles */
+.section.cta-split .columns > div > div::before,
+.section.cta-split .columns > div > div::after,
 .section.cta-split .columns .columns-img-col::before,
 .section.cta-split .columns .columns-img-col::after {
+  content: none;
   display: none;
 }
 
