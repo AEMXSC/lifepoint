@@ -3,10 +3,12 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
 .columns img {
   width: 100%;
+  border-radius: var(--columns-img-border-radius);
 }
 
 .columns > div > div {
@@ -32,4 +34,33 @@
     flex: 1;
     order: unset;
   }
+}
+
+/* Content column padding */
+.columns > div > div:not(.columns-img-col) {
+  padding: 16px 0;
+}
+
+@media (width >= 900px) {
+  .columns > div > div:not(.columns-img-col) {
+    padding: 24px 0;
+  }
+}
+
+/* Headings in columns */
+.columns h3 {
+  color: var(--color-purple);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Links in columns */
+.columns a.button {
+  margin-top: 16px;
+}
+
+/* Blue-gradient section columns — override image rounding */
+.section.blue-gradient .columns img {
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0 0 0 / 20%);
 }
