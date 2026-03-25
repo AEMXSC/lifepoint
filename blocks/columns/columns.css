@@ -243,15 +243,16 @@
   min-height: 400px;
 }
 
-/* Each panel */
+/* Each panel — overflow:hidden clips the absolute picture to panel bounds */
 .section.cta-split .columns > div > div {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 48px 40px;
+  justify-content: flex-end;
+  padding: 40px;
   position: relative;
+  overflow: hidden;
 }
 
 /* Suppress ALL pseudo-elements on CTA split panels — no decorative circles */
@@ -265,7 +266,7 @@
 
 /* Left panel — blue */
 .section.cta-split .columns > div > div:first-child {
-  background-color: #4a6cb3;
+  background-color: var(--color-blue);
 }
 
 /* Right panel — magenta */
@@ -273,16 +274,19 @@
   background-color: var(--color-magenta);
 }
 
-/* Images: desaturate via luminosity blend so panel color becomes the tint */
+/* Picture fills the entire panel as a full-bleed luminosity overlay */
 .section.cta-split .columns picture {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  max-width: 640px;
+  height: 100%;
+  max-width: unset;
 }
 
 .section.cta-split .columns img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   mix-blend-mode: luminosity;
   border-radius: 0;
@@ -291,18 +295,21 @@
   object-fit: cover;
 }
 
-/* Link text below the image */
+/* Link text sits above the picture layer at the bottom of each panel */
 .section.cta-split .columns p {
-  color: var(--color-light-blue);
-  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  margin: 0;
   line-height: 1;
 }
 
 .section.cta-split .columns p a {
-  color: var(--color-light-blue);
-  font-size: 18px;
-  font-weight: 600;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
 
 .section.cta-split .columns p a:hover {
@@ -311,10 +318,12 @@
 
 /* Override arrow button styling for this section */
 .section.cta-split .columns a.button {
-  color: var(--color-light-blue);
+  position: relative;
+  z-index: 1;
+  color: #fff;
   background: none;
   border: none;
-  margin-top: 20px;
+  margin: 0;
   padding: 0;
 }
 
