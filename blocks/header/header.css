@@ -332,6 +332,7 @@ header .nav-wrapper {
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0 0 0 / 10%);
   z-index: 100;
+  overflow: hidden; /* clip the utility bar box-shadow to nav-wrapper bounds */
 }
 
 /* Utility bar — the div in nav that has NO nav-* class (JS assigns brand/sections/tools/hamburger) */
@@ -361,6 +362,9 @@ header nav > div:not(.nav-hamburger):not(.nav-brand):not(.nav-sections):not(.nav
     order: -1;
     width: 100%;
     background-color: var(--color-blue);
+    /* Extend blue bg edge-to-edge beyond the nav's max-width */
+    box-shadow: 0 0 0 100vmax var(--color-blue);
+    clip-path: inset(0 -100vmax);
     justify-content: flex-end;
     align-items: center;
     gap: 24px;
@@ -399,10 +403,10 @@ header .nav-brand img {
   width: auto;
 }
 
-/* Nav links — purple on hover */
+/* Nav links */
 header nav .nav-sections ul li a {
-  color: var(--text-color);
-  font-weight: 500;
+  color: var(--color-purple);
+  font-weight: 600;
   font-size: 15px;
 }
 
