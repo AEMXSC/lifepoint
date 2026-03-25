@@ -2,18 +2,10 @@
 
 /* =============================================
    Lifepoint Footer
-   DOM (after EDS decoration of footer.plain.html):
-     .footer > div > .section:first-child > .default-content-wrapper
-       p (logo link)
-       h2 Who We Are + ul
-       h2 What We Do + ul
-       h2 Partner With Us + ul
-     .footer > div > .section:last-child > .default-content-wrapper
-       h2 Quick Links + ul (Locations, Join Our Team, News, Contact Us)
-       h2 Connect + ul (Facebook, LinkedIn, YouTube)
-       p (phone)
-       p (copyright)
-       ul (Privacy Policy, Terms of Use)
+   DOM (Section 1):
+     p (logo) | ul (nav cats) | ul (locations/join) | ul (news/contact) | ul (social)
+   DOM (Section 2):
+     p (copyright) | ul (legal links) | p (phone+address) | p (disclaimer)
    ============================================= */
 
 footer {
@@ -42,41 +34,29 @@ footer .section .default-content-wrapper {
 }
 
 /* =============================================
-   SECTION 1 — Logo + Nav columns
+   SECTION 1 — Logo + Nav columns + Social
    ============================================= */
 
 footer .section:first-child .default-content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding-top: 48px;
   padding-bottom: 40px;
 }
 
-/* Logo — full width on mobile, own column on desktop */
-footer .section:first-child p:first-child {
-  grid-column: 1 / -1;
-  margin: 0 0 8px;
-}
-
 @media (width >= 900px) {
   footer .section:first-child .default-content-wrapper {
-    grid-template-columns: 200px 1fr 1fr 1fr;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
   }
+}
 
-  footer .section:first-child p:first-child {
-    grid-column: 1;
-    grid-row: 1 / 3;
-    margin: 0;
-  }
-
-  /* Pair each h2 with its ul in the same column */
-  footer .section:first-child h2:nth-of-type(1) { grid-column: 2; grid-row: 1; }
-  footer .section:first-child ul:nth-of-type(1) { grid-column: 2; grid-row: 2; }
-  footer .section:first-child h2:nth-of-type(2) { grid-column: 3; grid-row: 1; }
-  footer .section:first-child ul:nth-of-type(2) { grid-column: 3; grid-row: 2; }
-  footer .section:first-child h2:nth-of-type(3) { grid-column: 4; grid-row: 1; }
-  footer .section:first-child ul:nth-of-type(3) { grid-column: 4; grid-row: 2; }
+/* Logo */
+footer .section:first-child p:first-child {
+  margin: 0;
+  flex: none;
 }
 
 footer .section:first-child p:first-child img {
@@ -85,43 +65,96 @@ footer .section:first-child p:first-child img {
   display: block;
 }
 
-/* Nav section headings */
-footer .section:first-child h2 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-purple);
-  font-family: var(--body-font-family);
-  margin: 0 0 12px;
-  letter-spacing: 0;
-  line-height: 1.3;
-}
-
-/* Sub-nav link lists */
+/* All nav lists */
 footer .section:first-child ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
-  min-width: 140px;
+  margin: 0;
+  flex: none;
 }
 
 footer .section:first-child ul li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-footer .section:first-child ul li a {
+/* Nav category links (ul 1) — purple, slightly larger */
+footer .section:first-child ul:nth-of-type(1) li a {
+  color: var(--color-purple);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+footer .section:first-child ul:nth-of-type(1) li a:hover {
+  text-decoration: underline;
+}
+
+/* Quick link columns (ul 2 + ul 3) */
+footer .section:first-child ul:nth-of-type(2) li a,
+footer .section:first-child ul:nth-of-type(3) li a {
   color: #4a4a4a;
   font-size: 13px;
   text-decoration: none;
   line-height: 1.5;
 }
 
-footer .section:first-child ul li a:hover {
+footer .section:first-child ul:nth-of-type(2) li a:hover,
+footer .section:first-child ul:nth-of-type(3) li a:hover {
   color: var(--color-purple);
   text-decoration: underline;
 }
 
+/* Push social icons to far right on desktop */
+@media (width >= 900px) {
+  footer .section:first-child ul:nth-of-type(4) {
+    margin-left: auto;
+  }
+}
+
+/* Social icons — grey circles */
+footer .section:first-child ul:nth-of-type(4) {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+footer .section:first-child ul:nth-of-type(4) li {
+  margin: 0;
+}
+
+footer .section:first-child ul:nth-of-type(4) li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #c8c8c8;
+  color: transparent;
+  font-size: 0;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+footer .section:first-child ul:nth-of-type(4) li:nth-child(1) a::after { content: 'f'; }
+footer .section:first-child ul:nth-of-type(4) li:nth-child(2) a::after { content: 'in'; }
+footer .section:first-child ul:nth-of-type(4) li:nth-child(3) a::after { content: '▶'; }
+
+footer .section:first-child ul:nth-of-type(4) li a::after {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+}
+
+footer .section:first-child ul:nth-of-type(4) li a:hover {
+  background-color: var(--color-blue);
+}
+
 /* =============================================
-   SECTION 2 — Legal bar (Quick Links + Social + Copyright)
+   SECTION 2 — Legal bar
    ============================================= */
 
 footer .section:last-child {
@@ -131,22 +164,29 @@ footer .section:last-child {
 footer .section:last-child .default-content-wrapper {
   padding-top: 20px;
   padding-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 0;
 }
 
-/* Hide section headings */
-footer .section:last-child h2 {
-  display: none;
+/* Copyright */
+footer .section:last-child p:first-of-type {
+  font-size: 12px;
+  color: #666;
+  margin: 0 6px 0 0;
+  flex: none;
 }
 
-/* Quick Links — horizontal pill nav */
+/* Legal links — Privacy Policy | Terms of Use | Cookie Preferences */
 footer .section:last-child ul:first-of-type {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
-  display: flex;
+  margin: 0;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 0;
   align-items: center;
+  flex: 1;
 }
 
 footer .section:last-child ul:first-of-type li {
@@ -154,19 +194,16 @@ footer .section:last-child ul:first-of-type li {
   align-items: center;
 }
 
-footer .section:last-child ul:first-of-type li + li::before {
-  content: '';
-  display: inline-block;
-  width: 1px;
-  height: 12px;
-  background: #ccc;
-  margin: 0 10px;
+/* Pipe before first item (separates from copyright) */
+footer .section:last-child ul:first-of-type li::before {
+  content: '|';
+  margin: 0 8px;
+  color: #ccc;
 }
 
 footer .section:last-child ul:first-of-type li a {
-  color: var(--color-purple);
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--color-blue);
+  font-size: 12px;
   text-decoration: none;
 }
 
@@ -174,138 +211,38 @@ footer .section:last-child ul:first-of-type li a:hover {
   text-decoration: underline;
 }
 
-/* Social links — grey circle icons */
-footer .section:last-child ul:nth-of-type(2) {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-footer .section:last-child ul:nth-of-type(2) li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background-color: #c0c0c0;
-  color: transparent;
-  font-size: 0;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Show first letter as icon label */
-footer .section:last-child ul:nth-of-type(2) li:nth-child(1) a::after { content: 'f'; }
-footer .section:last-child ul:nth-of-type(2) li:nth-child(2) a::after { content: 'in'; }
-footer .section:last-child ul:nth-of-type(2) li:nth-child(3) a::after { content: '▶'; }
-
-footer .section:last-child ul:nth-of-type(2) li a::after {
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  position: absolute;
-}
-
-footer .section:last-child ul:nth-of-type(2) li a:hover {
-  background-color: var(--color-blue);
-}
-
-/* Phone */
-footer .section:last-child p:first-of-type {
-  font-size: 14px;
+/* Phone + address — pushed to right */
+footer .section:last-child p:nth-of-type(2) {
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-purple);
-  margin: 0 0 4px;
+  margin: 0;
+  flex: none;
+  white-space: nowrap;
 }
 
-footer .section:last-child p:first-of-type a {
+footer .section:last-child p:nth-of-type(2) a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Copyright */
-footer .section:last-child p:nth-of-type(2) {
-  font-size: 12px;
-  color: #666;
-  margin: 0 0 12px;
+/* Legal disclaimer — full width below */
+footer .section:last-child p:nth-of-type(3) {
+  flex: 0 0 100%;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.6;
+  margin-top: 16px;
+  text-align: center;
 }
 
-/* Legal links */
-footer .section:last-child ul:last-of-type {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-}
-
-footer .section:last-child ul:last-of-type li {
-  display: flex;
-  align-items: center;
-}
-
-footer .section:last-child ul:last-of-type li + li::before {
-  content: '|';
-  margin: 0 8px;
-  color: #ccc;
-}
-
-footer .section:last-child ul:last-of-type li a {
-  color: var(--color-blue);
-  font-size: 12px;
-  text-decoration: none;
-}
-
-footer .section:last-child ul:last-of-type li a:hover {
-  text-decoration: underline;
-}
-
-/* Desktop: two-column legal bar */
 @media (width >= 900px) {
   footer .section:last-child .default-content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto;
-    column-gap: 40px;
-    row-gap: 4px;
+    flex-wrap: nowrap;
+    align-items: center;
   }
 
-  footer .section:last-child ul:first-of-type {
-    grid-column: 1 / -1; /* quick links spans full width */
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--color-off-white);
-  }
-
-  footer .section:last-child ul:nth-of-type(2) {
-    grid-column: 2;
-    grid-row: 2 / 4;
-    align-self: center;
-    margin: 0;
-    justify-content: flex-end;
-  }
-
-  footer .section:last-child p:first-of-type {
-    grid-column: 1;
-    grid-row: 2;
-    margin: 0;
-  }
-
-  footer .section:last-child p:nth-of-type(2) {
-    grid-column: 1;
-    grid-row: 3;
-    margin: 0;
-  }
-
-  footer .section:last-child ul:last-of-type {
-    grid-column: 1;
-    grid-row: 4;
-    margin-top: 8px;
+  footer .section:last-child p:nth-of-type(3) {
+    flex: 0 0 100%;
   }
 }
