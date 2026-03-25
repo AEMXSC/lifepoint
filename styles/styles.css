@@ -11,37 +11,51 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --overlay-background-color:lightgrey;
+  /* Lifepoint brand colors */
+  --color-purple: #6f3aa0;
+  --color-blue: #2b6bb2;
+  --color-magenta: #a51890;
+  --color-teal: #279989;
+  --color-green: #53bf36;
+  --color-light-blue: #389cd3;
+  --color-off-white: #efecea;
 
-  /* fonts */
+  /* semantic colors */
+  --background-color: #ffffff;
+  --light-color: var(--color-off-white);
+  --dark-color: var(--color-purple);
+  --text-color: #0a0a0a;
+  --link-color: var(--color-blue);
+  --link-hover-color: var(--color-magenta);
+  --overlay-background-color: rgba(0 0 0 / 40%);
+
+  /* gradients */
+  --gradient-blue: linear-gradient(90deg, var(--color-blue), var(--color-light-blue));
+  --gradient-purple: linear-gradient(90deg, var(--color-purple), var(--color-magenta));
+  --gradient-teal: linear-gradient(90deg, var(--color-teal), var(--color-light-blue));
+
+  /* fonts — ff-dax-pro loaded via Adobe Fonts (Typekit) in head.html */
   --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --heading-font-family: ff-dax-pro, 'Helvetica Neue', helvetica, roboto-condensed, roboto-condensed-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
+  /* heading sizes — matched to lifepointhealth.net */
+  --heading-font-size-xxl: 44px;
+  --heading-font-size-xl: 36px;
+  --heading-font-size-l: 32px;
+  --heading-font-size-m: 28px;
   --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-xs: 20px;
 
   /* layout */
   --max-width-site: 1200px;
 
   /* nav heights */
-  --nav-height: 64px;
+  --nav-height: 130px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
@@ -122,8 +136,9 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-purple);
   scroll-margin: 40px;
 }
 
@@ -270,4 +285,74 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* Lifepoint brand section backgrounds */
+main .section.blue-gradient {
+  background: var(--gradient-blue);
+  margin: 0;
+  padding: 60px 0;
+  color: #fff;
+}
+
+main .section.blue-gradient h1,
+main .section.blue-gradient h2,
+main .section.blue-gradient h3,
+main .section.blue-gradient h4,
+main .section.blue-gradient p,
+main .section.blue-gradient li {
+  color: #fff;
+}
+
+main .section.blue-gradient a:not(.button) {
+  color: #fff;
+  text-decoration: underline;
+}
+
+main .section.blue-gradient a.button {
+  background-color: #fff;
+  color: var(--color-blue);
+  border-color: #fff;
+}
+
+main .section.blue-gradient a.button:hover {
+  background-color: var(--color-off-white);
+}
+
+main .section.cta-split {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.cta-split .columns > div {
+  gap: 0;
+}
+
+main .section.cta-split .columns > div > div:first-child {
+  background-color: var(--color-blue);
+  padding: 60px 40px;
+  text-align: center;
+}
+
+main .section.cta-split .columns > div > div:last-child {
+  background-color: var(--color-magenta);
+  padding: 60px 40px;
+  text-align: center;
+}
+
+main .section.cta-split .columns > div > div p,
+main .section.cta-split .columns > div > div h1,
+main .section.cta-split .columns > div > div h2,
+main .section.cta-split .columns > div > div h3 {
+  color: #fff;
+}
+
+main .section.cta-split .columns a.button {
+  background-color: #fff;
+  color: var(--color-blue);
+  border-color: #fff;
+}
+
+main .section.cta-split .columns > div > div:last-child a.button {
+  color: var(--color-magenta);
 }
