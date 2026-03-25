@@ -36,12 +36,12 @@
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle 110px at 61% 28%, var(--color-magenta) 99%, transparent 100%),
-    radial-gradient(circle 155px at 57% 62%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 130px at 86% 22%, #5468b7 99%, transparent 100%),
-    radial-gradient(circle 88px at 46% 88%, var(--color-magenta) 99%, transparent 100%),
-    radial-gradient(circle 108px at 64% 92%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 150px at 98% 54%, #5468b7 99%, transparent 100%);
+    radial-gradient(circle 55px at 61% 28%, var(--color-magenta) 99%, transparent 100%),
+    radial-gradient(circle 78px at 57% 62%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 65px at 86% 22%, #5468b7 99%, transparent 100%),
+    radial-gradient(circle 44px at 46% 88%, var(--color-magenta) 99%, transparent 100%),
+    radial-gradient(circle 54px at 64% 92%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 75px at 98% 54%, #5468b7 99%, transparent 100%);
 }
 
 /* White gradient overlay — z-index 2, on top of circles */
