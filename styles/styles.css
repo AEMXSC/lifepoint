@@ -356,3 +356,84 @@ main .section.cta-split .columns a.button {
 main .section.cta-split .columns > div > div:last-child a.button {
   color: var(--color-magenta);
 }
+
+/* =============================================
+   Lifepoint — Page layout improvements
+   ============================================= */
+
+/* More breathing room between sections */
+main > .section {
+  margin: 60px 0;
+}
+
+@media (width >= 900px) {
+  main > .section {
+    margin: 80px 0;
+  }
+}
+
+/* Content sections (alternating image/text) — subtle divider */
+main > .section + .section:not(.blue-gradient):not(.cta-split):not(.light) {
+  border-top: 1px solid var(--color-off-white);
+  padding-top: 60px;
+}
+
+/* Cards section — light background */
+main .section:has(.cards) {
+  background-color: var(--color-off-white);
+  margin: 0;
+  padding: 60px 0;
+}
+
+@media (width >= 900px) {
+  main .section:has(.cards) {
+    padding: 80px 0;
+  }
+}
+
+/* Latest News heading */
+main .section:has(.cards) h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--color-purple);
+}
+
+/* "View More" link after cards */
+main .section:has(.cards) > div > p:last-child {
+  text-align: center;
+  margin-top: 32px;
+}
+
+main .section:has(.cards) > div > p:last-child a {
+  display: inline-block;
+  padding: 0.5em 1.4em;
+  border: 2px solid var(--color-blue);
+  border-radius: 2.4em;
+  color: var(--color-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+main .section:has(.cards) > div > p:last-child a:hover {
+  background-color: var(--color-blue);
+  color: #fff;
+}
+
+/* Mission section heading */
+main > .section > h3:first-child {
+  color: var(--color-purple);
+  font-size: var(--heading-font-size-l);
+  margin-bottom: 8px;
+}
+
+/* Hero description text */
+.hero p {
+  font-size: var(--body-font-size-m);
+  max-width: 560px;
+  line-height: 1.7;
+  opacity: 0.92;
+}
+
+/* Typekit ff-dax-pro — add your kit URL to head.html:
+   <link rel="stylesheet" href="https://use.typekit.net/YOUR_KIT.css">
+*/
