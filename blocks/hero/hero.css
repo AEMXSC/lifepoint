@@ -11,13 +11,6 @@
   min-height: var(--hero-min-height);
 }
 
-.hero h1 {
-  max-width: var(--hero-heading-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
 .hero picture {
   position: absolute;
   z-index: -1;
@@ -32,20 +25,23 @@
   height: 100%;
 }
 
-/* Lifepoint hero overlay + text */
+/* Dark overlay — left heavy so left-aligned text is readable */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to right, rgba(0 0 0 / 55%) 0%, rgba(0 0 0 / 20%) 60%, transparent 100%);
+  background: linear-gradient(to right, rgba(0 0 0 / 60%) 0%, rgba(0 0 0 / 30%) 50%, rgba(0 0 0 / 10%) 100%);
 }
 
+/* Left-aligned hero text */
 .hero h1 {
+  max-width: var(--hero-heading-max-width);
   color: #fff;
   font-size: var(--heading-font-size-xxl);
   font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0 0 0 / 30%);
+  text-shadow: 0 2px 8px rgba(0 0 0 / 40%);
+  margin-top: 0;
 }
 
 .hero h1 em {
@@ -56,16 +52,17 @@
 .hero p {
   color: #fff;
   max-width: var(--hero-heading-max-width);
-  margin-left: auto;
-  margin-right: auto;
   font-size: var(--body-font-size-m);
   line-height: 1.6;
+  margin-top: 16px;
+  opacity: 0.9;
 }
 
 .hero a.button {
   background-color: var(--color-blue);
   border-color: var(--color-blue);
   color: #fff;
+  margin-top: 8px;
 }
 
 .hero a.button:hover {

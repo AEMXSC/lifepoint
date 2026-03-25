@@ -6,21 +6,12 @@
   gap: 24px;
 }
 
-.columns img {
-  width: 100%;
-  border-radius: var(--columns-img-border-radius);
-}
-
 .columns > div > div {
   order: 1;
 }
 
 .columns > div > .columns-img-col {
   order: 0;
-}
-
-.columns > div > .columns-img-col img {
-  display: block;
 }
 
 @media (width >= 900px) {
@@ -43,24 +34,140 @@
 
 @media (width >= 900px) {
   .columns > div > div:not(.columns-img-col) {
-    padding: 24px 0;
+    padding: 24px 40px;
   }
 }
 
 /* Headings in columns */
+.columns h2,
 .columns h3 {
   color: var(--color-purple);
   margin-top: 0;
   margin-bottom: 16px;
+  font-size: var(--heading-font-size-l);
 }
 
-/* Links in columns */
+/* Body text */
+.columns p {
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* "Read more →" — plain text link with arrow, not a button */
 .columns a.button {
-  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: var(--color-blue);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-/* Blue-gradient section columns — override image rounding */
-.section.blue-gradient .columns img {
-  border-radius: 4px;
-  box-shadow: 0 8px 32px rgba(0 0 0 / 20%);
+.columns a.button::after {
+  content: '→';
+  font-size: 18px;
+}
+
+.columns a.button:hover {
+  background: none;
+  color: var(--color-magenta);
+  text-decoration: none;
+}
+
+/* Circular image crop — Lifepoint brand style */
+.columns .columns-img-col {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.columns .columns-img-col img {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Decorative circles around the image */
+.columns .columns-img-col::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--color-green);
+  pointer-events: none;
+}
+
+.columns .columns-img-col::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-purple);
+  pointer-events: none;
+}
+
+/* Alternate decorative circle colors for every other columns block */
+.section:nth-of-type(even) .columns .columns-img-col::before {
+  border-color: var(--color-magenta);
+}
+
+.section:nth-of-type(even) .columns .columns-img-col::after {
+  background-color: var(--color-teal);
+}
+
+/* Blue-gradient section: rectangular image with rounded corners, no decorative circles */
+.section.blue-gradient .columns .columns-img-col::before,
+.section.blue-gradient .columns .columns-img-col::after {
+  display: none;
+}
+
+.section.blue-gradient .columns .columns-img-col img {
+  border-radius: 8px;
+  aspect-ratio: unset;
+  max-width: unset;
+  box-shadow: 0 8px 32px rgba(0 0 0 / 25%);
+}
+
+/* Blue-gradient text overrides */
+.section.blue-gradient .columns h2,
+.section.blue-gradient .columns h3,
+.section.blue-gradient .columns p {
+  color: #fff;
+}
+
+.section.blue-gradient .columns .columns-img-col {
+  padding: 0;
+}
+
+.section.blue-gradient .columns a.button {
+  color: #fff;
+  border-bottom: 2px solid rgba(255 255 255 / 60%);
+  padding-bottom: 2px;
+}
+
+.section.blue-gradient .columns a.button::after {
+  content: '';
+}
+
+.section.blue-gradient .columns a.button:hover {
+  color: #fff;
+  border-bottom-color: #fff;
 }
