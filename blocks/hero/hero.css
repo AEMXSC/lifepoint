@@ -27,33 +27,32 @@
   height: 100%;
 }
 
-/* Decorative brand circles — z-index 1, behind white overlay */
-/* White overlay on left will mask them; right side (transparent) reveals circles above photo */
+/* Decorative brand circles — z-index 1 */
+/* All circles kept at x ≥ 50% so the solid white text area is unobstructed */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    /* Top row */
-    radial-gradient(circle 55px at 42% 22%, var(--color-magenta) 99%, transparent 100%),
-    radial-gradient(circle 80px at 56% 30%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 105px at 84% 14%, #5468b7 99%, transparent 100%),
-    /* Middle — overlap with hero image */
-    radial-gradient(circle 90px at 58% 62%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 85px at 69% 60%, var(--color-magenta) 99%, transparent 100%),
+    /* Top row — center/right */
+    radial-gradient(circle 58px at 53% 20%, var(--color-magenta) 99%, transparent 100%),
+    radial-gradient(circle 88px at 67% 28%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 108px at 86% 12%, #5468b7 99%, transparent 100%),
+    /* Middle */
+    radial-gradient(circle 95px at 56% 62%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 88px at 72% 58%, var(--color-magenta) 99%, transparent 100%),
     /* Right edge accents */
-    radial-gradient(circle 35px at 92% 44%, var(--color-teal) 99%, transparent 100%),
-    radial-gradient(circle 28px at 99% 30%, var(--color-green) 99%, transparent 100%),
-    radial-gradient(circle 40px at 96% 38%, var(--color-teal) 99%, transparent 100%),
+    radial-gradient(circle 36px at 93% 44%, var(--color-teal) 99%, transparent 100%),
+    radial-gradient(circle 30px at 99% 30%, var(--color-green) 99%, transparent 100%),
+    radial-gradient(circle 42px at 97% 37%, var(--color-teal) 99%, transparent 100%),
     /* Bottom */
-    radial-gradient(circle 105px at 80% 90%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 92px at 97% 82%, #5468b7 99%, transparent 100%);
+    radial-gradient(circle 108px at 82% 90%, var(--color-purple) 99%, transparent 100%),
+    radial-gradient(circle 95px at 98% 82%, #5468b7 99%, transparent 100%);
 }
 
-/* White gradient overlay — z-index 2, above circles, below content div */
-/* Works correctly because hero.js moves picture to direct child of .hero */
-/* Layer order in .hero: picture(0) → circles ::before(1) → gradient ::after(2) → content div(3) */
+/* White gradient overlay — solid white to 40%, then fade out by 62% */
+/* Ensures text area stays clean; circles only show where photo is visible */
 .hero::after {
   content: '';
   position: absolute;
@@ -63,9 +62,9 @@
   background: linear-gradient(
     to right,
     #fff 0%,
-    rgba(255 255 255 / 98%) 25%,
-    rgba(255 255 255 / 70%) 45%,
-    rgba(255 255 255 / 0%) 65%
+    #fff 35%,
+    rgba(255 255 255 / 85%) 48%,
+    rgba(255 255 255 / 0%) 62%
   );
 }
 
