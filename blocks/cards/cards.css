@@ -12,8 +12,11 @@
 .cards > ul > li {
   background-color: var(--background-color);
   box-shadow: 0 2px 12px rgba(0 0 0 / 8%);
+  border-top: none;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .cards .cards-card-body {
@@ -67,7 +70,7 @@
   margin-bottom: 8px;
 }
 
-/* "Read more" — plain link, not a filled button */
+/* "Read more" — plain link, no button style, no arrow */
 .cards .cards-card-body a.button {
   background: none;
   border: none;
@@ -76,6 +79,10 @@
   font-weight: 700;
   font-size: 14px;
   text-decoration: none;
+}
+
+.cards .cards-card-body a.button::after {
+  content: none;
 }
 
 .cards .cards-card-body a.button:hover {

@@ -384,9 +384,15 @@ main > .section + .section:not(.blue-gradient):not(.cta-split):not(.light) {
   padding-top: 60px;
 }
 
+/* Contain decorative circles within each column section — prevent overflow into adjacent sections */
+main .section:has(.columns):not(.cta-split) {
+  overflow: hidden;
+}
+
 /* Cards section — light background */
 main .section:has(.cards) {
   background-color: var(--color-off-white);
+  border-top: none;
   margin: 0;
   padding: 60px 0;
 }
