@@ -27,45 +27,50 @@
   height: 100%;
 }
 
-/* Decorative brand circles — z-index 1 */
-/* All circles kept at x ≥ 50% so the solid white text area is unobstructed */
+/* White gradient overlay — matches production: solid white left, fades to transparent */
+/* Production: linear-gradient(90deg, #fff 15%, rgba(255,255,255,0)) at 75% width */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    /* Top row — center/right */
-    radial-gradient(circle 58px at 53% 20%, var(--color-magenta) 99%, transparent 100%),
-    radial-gradient(circle 88px at 67% 28%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 108px at 86% 12%, #5468b7 99%, transparent 100%),
-    /* Middle */
-    radial-gradient(circle 95px at 56% 62%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 88px at 72% 58%, var(--color-magenta) 99%, transparent 100%),
-    /* Right edge accents */
-    radial-gradient(circle 36px at 93% 44%, var(--color-teal) 99%, transparent 100%),
-    radial-gradient(circle 30px at 99% 30%, var(--color-green) 99%, transparent 100%),
-    radial-gradient(circle 42px at 97% 37%, var(--color-teal) 99%, transparent 100%),
-    /* Bottom */
-    radial-gradient(circle 108px at 82% 90%, var(--color-purple) 99%, transparent 100%),
-    radial-gradient(circle 95px at 98% 82%, #5468b7 99%, transparent 100%);
+  background: linear-gradient(90deg, #fff 15%, rgba(255 255 255 / 0%));
+  width: 75%;
+  pointer-events: none;
 }
 
-/* White gradient overlay — solid white to 40%, then fade out by 62% */
-/* Ensures text area stays clean; circles only show where photo is visible */
+/* Bottom edge shadow — matches production .hero::after */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: inset 0 -14px 14px -14px rgba(0 0 0 / 10%);
+}
+
+/* Decorative SVG circles — injected by hero.js, positioned right side */
+.hero .hero-circle {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(
-    to right,
-    #fff 0%,
-    #fff 35%,
-    rgba(255 255 255 / 85%) 48%,
-    rgba(255 255 255 / 0%) 62%
-  );
+}
+
+.hero .hero-circle svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (width >= 900px) {
+  .hero .hero-circle {
+    right: 8%;
+    transform: translateY(-50%) scale(1.4);
+  }
 }
 
 /* Content — above circles and gradient */

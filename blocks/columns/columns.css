@@ -351,6 +351,17 @@
    so we target the link wrapper directly
    ============================================= */
 
+/* =============================================
+   Video columns (Vimeo thumbnails)
+   ============================================= */
+
+/* Suppress img-col decorative circles when columns block has vimeo videos */
+.columns:has(a[href*="vimeo"]) .columns-img-col::before,
+.columns:has(a[href*="vimeo"]) .columns-img-col::after {
+  content: none;
+  display: none;
+}
+
 /* Vimeo links that wrap an image → circular crop */
 .columns a[href*="vimeo"]:has(img) {
   display: block;
@@ -371,27 +382,40 @@
   max-width: unset;
 }
 
-/* Play button overlay */
+/* Play button — colored circle overlay matching production style */
 .columns a[href*="vimeo"]:has(img)::after {
   content: '▶';
   position: absolute;
-  inset: 0;
+  bottom: 12%;
+  left: 12%;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 14px;
   color: #fff;
-  background: rgba(0 0 0 / 30%);
+  background: var(--color-purple);
   border-radius: 50%;
-  text-indent: 4px;
+  text-indent: 3px;
   transition: background 0.2s;
+  inset: unset;
 }
 
 .columns a[href*="vimeo"]:has(img):hover::after {
-  background: rgba(0 0 0 / 50%);
+  background: var(--color-magenta);
 }
 
-/* Single-video column (right col) — larger circle */
+/* Single-video column (right col) — larger circle, green play button */
 .columns > div > div > p:only-child > a[href*="vimeo"]:has(img) {
   max-width: 320px;
+}
+
+.columns > div > div > p:only-child > a[href*="vimeo"]:has(img)::after {
+  background: var(--color-green);
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  bottom: 14%;
+  left: 14%;
 }
