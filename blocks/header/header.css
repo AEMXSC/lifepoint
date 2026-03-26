@@ -438,8 +438,11 @@ header nav .nav-sections ul li.nav-drop > ul li a:hover {
   color: var(--color-blue);
 }
 
-/* Contact Us CTA button */
-header nav .nav-tools a {
+/* Contact Us CTA button — use a.button to beat base rule specificity */
+/* Base: header nav .nav-tools .button { background: none } (0,0,2,2) */
+/* Ours: header nav .nav-tools a.button (0,0,2,3) — wins */
+header nav .nav-tools a,
+header nav .nav-tools a.button {
   background-color: var(--color-blue);
   color: #fff;
   border-radius: 2.4em;
@@ -448,9 +451,13 @@ header nav .nav-tools a {
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
+  border: none;
+  line-height: normal;
+  margin: 0;
 }
 
-header nav .nav-tools a:hover {
+header nav .nav-tools a:hover,
+header nav .nav-tools a.button:hover {
   background-color: var(--color-magenta);
 }
 
