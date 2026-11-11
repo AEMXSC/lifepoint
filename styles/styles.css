@@ -620,3 +620,16 @@ body.mayo main .section.blue-gradient a.button.secondary {
   background-color: transparent;
   color: #fff;
 }
+
+body.mayo .columns .columns-img-col::before,
+body.mayo .columns .columns-img-col::after {
+  display: none;
+}
+
+body.mayo .cards .cards-card-body > p:first-of-type {
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  color: var(--mayo-ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
