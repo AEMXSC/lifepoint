@@ -160,6 +160,16 @@ body.mayo header nav .nav-tools a:hover {
   text-decoration: underline;
 }
 
+body.mayo header nav .nav-tools p:last-child {
+  display: none;
+}
+
+@media (width >= 900px) {
+  body.mayo header nav .nav-tools p:last-child {
+    display: block;
+  }
+}
+
 body.mayo header nav .nav-tools .default-content-wrapper {
   display: flex;
   align-items: center;
@@ -273,7 +283,7 @@ body.mayo .hero {
   flex-direction: column;
   gap: 40px;
   min-height: 0;
-  padding: calc(var(--nav-height) + 32px) 24px 24px;
+  padding: 40px 24px 24px;
   background: #fff;
 }
 
@@ -339,7 +349,7 @@ body.mayo .hero .button-wrapper {
 
 @media (width >= 900px) {
   body.mayo .hero {
-    padding: calc(var(--nav-height) + 40px) 48px 32px;
+    padding: 56px 48px 32px;
   }
 
   body.mayo .hero > div > div {
