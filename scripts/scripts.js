@@ -391,6 +391,10 @@ async function loadThemeSpreadSheetConfig() {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  // Customer demo themes live in their own stylesheet, loaded only when used
+  if (doc.body.classList.contains('mayo')) {
+    await loadCSS(`${window.hlx.codeBasePath}/styles/mayo-theme.css`);
+  }
   // loadThemeSpreadSheetConfig(); uncomment if using theme spreadsheets
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;

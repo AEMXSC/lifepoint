@@ -1,0 +1,535 @@
+/* ==========================================================================
+   Mayo Clinic demo theme — loaded by scripts.js ONLY when page metadata
+   "Theme: mayo" is set. Values mirror Mayo's Skyway (SDS) tokens.
+   Mayo Clinic Sans is licensed; Figtree is the closest open substitute.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap');
+
+body.mayo {
+  --mayo-blue: #0054e4;
+  --mayo-blue-hover: #0014ac;
+  --mayo-blue-pale: #e9f9fe;
+  --mayo-navy: #000529;
+  --mayo-ink: #080808;
+  --mayo-gray: #595959;
+  --mayo-line: #d6d6d6;
+  --mayo-radius-pill: 32px;
+  --mayo-radius-media: 32px;
+  --mayo-radius-panel: 40px;
+  --mayo-rail-width: 340px;
+  --color-blue: var(--mayo-blue);
+  --color-light-blue: #0098fe;
+  --color-magenta: var(--mayo-blue-hover);
+  --color-purple: var(--mayo-navy);
+  --color-off-white: #fff;
+  --light-color: #fff;
+  --dark-color: var(--mayo-navy);
+  --text-color: var(--mayo-ink);
+  --link-color: var(--mayo-blue);
+  --link-hover-color: var(--mayo-blue-hover);
+  --body-font-family: figtree, roboto, roboto-fallback, sans-serif;
+  --heading-font-family: figtree, roboto, roboto-fallback, sans-serif;
+  --body-font-size-m: 18px;
+  --nav-height: 96px;
+  --max-width-site: 1440px;
+
+  font-family: var(--body-font-family);
+  color: var(--mayo-ink);
+}
+
+@media (width >= 900px) {
+  body.mayo {
+    --body-font-size-m: 20px;
+    --nav-height: 120px;
+  }
+}
+
+/* ---------- Typography ---------- */
+body.mayo h1,
+body.mayo h2,
+body.mayo h3 {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  color: var(--mayo-ink);
+  letter-spacing: -0.015em;
+}
+
+body.mayo h2 {
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+body.mayo h3 {
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+body.mayo main p,
+body.mayo main li {
+  font-size: var(--body-font-size-m);
+  line-height: 1.55;
+}
+
+@media (width >= 900px) {
+  body.mayo h2 {
+    font-size: 48px;
+  }
+
+  body.mayo h3 {
+    font-size: 24px;
+  }
+}
+
+/* ---------- Buttons ---------- */
+body.mayo a.button,
+body.mayo .cards .cards-card-body a.button {
+  border: 1px solid var(--mayo-blue);
+  border-radius: var(--mayo-radius-pill);
+  padding: 14px 32px;
+  background-color: var(--mayo-blue);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+body.mayo a.button::after {
+  display: none;
+}
+
+body.mayo a.button:hover,
+body.mayo a.button:focus-visible {
+  border-color: var(--mayo-blue-hover);
+  background-color: var(--mayo-blue-hover);
+  color: #fff;
+}
+
+body.mayo a.button.secondary {
+  background-color: #fff;
+  color: var(--mayo-blue);
+}
+
+body.mayo a.button.secondary:hover,
+body.mayo a.button.secondary:focus-visible {
+  background-color: var(--mayo-blue-pale);
+  color: var(--mayo-blue-hover);
+}
+
+/* ---------- Header ---------- */
+body.mayo header .nav-wrapper {
+  border-bottom: 1px solid var(--mayo-line);
+  background: #fff;
+}
+
+body.mayo header nav {
+  height: var(--nav-height);
+  max-width: 1760px;
+  font-family: var(--body-font-family);
+}
+
+body.mayo header nav .nav-brand img {
+  width: auto;
+  height: 64px;
+}
+
+body.mayo header nav .nav-sections a,
+body.mayo header nav .nav-sections p,
+body.mayo header nav .nav-tools a {
+  color: var(--mayo-ink);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+body.mayo header nav .nav-tools .button {
+  padding: 0.5em 0.75em;
+  background: none;
+  color: var(--mayo-ink);
+  line-height: 1.3;
+}
+
+@media (width >= 900px) {
+  body.mayo header nav .nav-brand img {
+    height: 80px;
+  }
+
+  body.mayo header nav .nav-sections .default-content-wrapper > ul {
+    gap: 40px;
+  }
+
+  body.mayo header nav .nav-sections .default-content-wrapper > ul > li {
+    max-width: 190px;
+  }
+}
+
+/* ---------- Page layout: hero full width, then rail + content ---------- */
+@media (width >= 1100px) {
+  body.mayo main {
+    display: grid;
+    grid-template-columns: var(--mayo-rail-width) minmax(0, 1fr);
+    column-gap: 48px;
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  body.mayo main > .section {
+    grid-column: 2;
+  }
+
+  body.mayo main > .section.hero-container {
+    grid-column: 1 / -1;
+  }
+
+  body.mayo main > .section.mayo-rail {
+    grid-column: 1;
+    grid-row: 2 / span 40;
+    margin: 0;
+    padding-top: 40px;
+    border-right: 1px dashed var(--mayo-line);
+  }
+
+  body.mayo main > .section > div {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+/* ---------- Hero ---------- */
+body.mayo .hero-container .hero-wrapper {
+  padding: 0;
+}
+
+body.mayo .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-height: 0;
+  padding: calc(var(--nav-height) + 32px) 24px 24px;
+  background: #fff;
+}
+
+body.mayo .hero::before,
+body.mayo .hero::after,
+body.mayo .hero .hero-circle {
+  display: none;
+}
+
+body.mayo .hero > div {
+  order: 1;
+}
+
+body.mayo .hero > div > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: end;
+}
+
+body.mayo .hero picture {
+  position: static;
+  order: 2;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--mayo-radius-media);
+}
+
+body.mayo .hero img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+body.mayo .hero h1 {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--mayo-navy);
+}
+
+body.mayo .hero h1 + p {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--mayo-navy);
+}
+
+body.mayo .hero h1 + p strong {
+  font-weight: 800;
+}
+
+body.mayo .hero .button-wrapper {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  body.mayo .hero {
+    padding: calc(var(--nav-height) + 64px) 48px 32px;
+  }
+
+  body.mayo .hero > div > div {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    column-gap: 20px;
+    row-gap: 24px;
+  }
+
+  body.mayo .hero h1 {
+    font-size: 30px;
+  }
+
+  body.mayo .hero h1 + p {
+    font-size: clamp(56px, 5.4vw, 100px);
+    padding-right: 24px;
+  }
+
+  body.mayo .hero .button-wrapper {
+    padding-bottom: 14px;
+  }
+
+  body.mayo .hero img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+@media (width >= 1100px) {
+  body.mayo .hero {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ---------- Care-journey rail ---------- */
+body.mayo .section.mayo-rail {
+  display: none;
+}
+
+@media (width >= 1100px) {
+  body.mayo .section.mayo-rail {
+    display: block;
+  }
+
+  body.mayo .section.mayo-rail .default-content-wrapper {
+    position: sticky;
+    top: calc(var(--nav-height) + 32px);
+    padding-right: 32px;
+  }
+
+  body.mayo .section.mayo-rail ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  body.mayo .section.mayo-rail li {
+    margin: 0 0 14px;
+  }
+
+  body.mayo .section.mayo-rail li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    padding: 6px 16px;
+    color: var(--mayo-ink);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  body.mayo .section.mayo-rail li a::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    margin: 0 4px 6px 16px;
+    border-right: 2px solid var(--mayo-blue);
+    border-bottom: 2px solid var(--mayo-blue);
+    transform: rotate(45deg);
+  }
+
+  body.mayo .section.mayo-rail li:first-child a {
+    margin-bottom: 18px;
+    background: var(--mayo-blue-pale);
+    color: var(--mayo-blue);
+  }
+
+  body.mayo .section.mayo-rail li:first-child a::after {
+    display: none;
+  }
+
+  body.mayo .section.mayo-rail li a:hover {
+    color: var(--mayo-blue);
+  }
+}
+
+/* ---------- Content sections ---------- */
+body.mayo main > .section {
+  margin: 64px 0;
+}
+
+body.mayo main .section.light,
+body.mayo main .section.highlight {
+  margin: 64px 0;
+  padding: 0;
+  background: #fff;
+}
+
+body.mayo .columns img {
+  border-radius: var(--mayo-radius-media);
+}
+
+body.mayo .columns .columns-img-col::before,
+body.mayo .columns .columns-img-col::after {
+  display: none;
+}
+
+body.mayo .columns h2 {
+  margin-top: 0;
+}
+
+/* Stats */
+body.mayo .columns.stats > div {
+  gap: 24px;
+}
+
+body.mayo .columns.stats > div > div {
+  border-top: 1px solid var(--mayo-line);
+  padding-top: 20px;
+}
+
+body.mayo .columns.stats h3 {
+  margin: 0 0 8px;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--mayo-blue);
+}
+
+/* Quote */
+body.mayo .quote blockquote {
+  margin: 0;
+  padding: 0;
+  font-family: var(--heading-font-family);
+  color: var(--mayo-ink);
+}
+
+body.mayo .quote blockquote .quote-quotation p {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Cards */
+body.mayo .cards > ul {
+  gap: 24px;
+}
+
+body.mayo .cards > ul > li {
+  border: 1px solid var(--mayo-line);
+  border-radius: 24px;
+  box-shadow: none;
+  background: #fff;
+  overflow: hidden;
+}
+
+body.mayo .cards > ul > li img {
+  border-radius: 0;
+}
+
+body.mayo .cards .cards-card-body {
+  padding: 24px;
+}
+
+body.mayo .cards .cards-card-body > p:first-of-type {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--mayo-ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+body.mayo .cards .cards-card-body h3 {
+  margin-top: 0;
+  color: var(--mayo-ink);
+}
+
+/* ---------- Final CTA panel ---------- */
+body.mayo main .section.mayo-cta {
+  margin: 64px 0 96px;
+  background: none;
+}
+
+body.mayo main .section.mayo-cta .default-content-wrapper {
+  display: grid;
+  gap: 16px 32px;
+  border-radius: var(--mayo-radius-panel);
+  padding: 40px 32px;
+  background: var(--mayo-blue);
+  color: #fff;
+}
+
+body.mayo main .section.mayo-cta h2,
+body.mayo main .section.mayo-cta p {
+  margin: 0;
+  color: #fff;
+}
+
+body.mayo main .section.mayo-cta h2 {
+  font-size: 36px;
+}
+
+body.mayo main .section.mayo-cta .button-wrapper {
+  display: inline-block;
+}
+
+body.mayo main .section.mayo-cta a.button {
+  border-color: #fff;
+  background: #fff;
+  color: var(--mayo-blue);
+}
+
+body.mayo main .section.mayo-cta a.button.secondary {
+  background: transparent;
+  color: #fff;
+}
+
+body.mayo main .section.mayo-cta a.button.secondary:hover {
+  background: rgb(255 255 255 / 12%);
+}
+
+@media (width >= 900px) {
+  body.mayo main .section.mayo-cta .default-content-wrapper {
+    grid-template-columns: minmax(0, 0.8fr) auto auto 1fr;
+    align-items: center;
+    padding: 56px;
+  }
+
+  body.mayo main .section.mayo-cta h2 {
+    grid-row: 1 / span 2;
+    font-size: 40px;
+  }
+
+  body.mayo main .section.mayo-cta h2 + p {
+    grid-column: 2 / -1;
+    align-self: end;
+  }
+
+  body.mayo main .section.mayo-cta .button-wrapper {
+    grid-row: 2;
+    align-self: start;
+  }
+}
