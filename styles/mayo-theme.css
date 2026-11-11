@@ -146,6 +146,20 @@ body.mayo header nav .nav-tools a {
   letter-spacing: 0;
 }
 
+body.mayo header nav .nav-tools a {
+  border-radius: 0;
+  padding: 0;
+  background: none;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+body.mayo header nav .nav-tools a:hover {
+  background: none;
+  color: var(--mayo-blue);
+  text-decoration: underline;
+}
+
 body.mayo header nav .nav-tools .default-content-wrapper {
   display: flex;
   align-items: center;
@@ -172,8 +186,22 @@ body.mayo header nav .nav-tools a.button:hover {
     height: 80px;
   }
 
+  body.mayo header nav {
+    flex-wrap: nowrap;
+    padding: 0 32px;
+  }
+
+  body.mayo header nav .nav-brand {
+    padding-left: 0;
+  }
+
   body.mayo header nav .nav-sections {
+    flex: 1 1 auto;
     white-space: normal;
+  }
+
+  body.mayo header nav .nav-tools {
+    padding-right: 0;
   }
 
   body.mayo header nav .nav-sections .default-content-wrapper > ul {
